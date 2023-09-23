@@ -8,14 +8,20 @@ def is_valid(num):
     else:
         return False
 
-flag = False
+flag_1 = False
 
-while flag == False:
+while flag_1 == False:
     n = input("Введите число от 1 до 100")
     if is_valid(n):
         n = int(n)
-        flag = True
-        break
+        if n > number:
+            print('Ваше число больше загаданного, попробуйте еще разок')
+            n = input()
+        elif n < number:
+            print('Ваше число меньше загаданного, попробуйте еще разок')
+        else:
+            print('Верно, Вы угадали! Поздравляем!')
+            flag_1 = True
+            break       
     else:
         print('Ввод некорректный. Введите число от 1 до 100')
-
