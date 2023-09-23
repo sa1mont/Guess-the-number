@@ -1,18 +1,36 @@
 import random
-number = random.randint(1, 101)
-print("Добро пожаловать в числовую угадайку. Мной было загадано число, попробуй ка отгадать.")
+print("Добро пожаловать в числовую угадайку.")
 
-def is_valid(num):
-    if num.isdigit() and 1 <= int(num) <= 100:
+def is_valid(num, numb):
+    if num.isdigit() and 1 <= int(num) <= numb:
+        return True
+    else:
+        return False
+
+def is_valid_max(numb):
+    if numb.isdigit() and int(numb) > 1:
         return True
     else:
         return False
 
 flag_1 = False
-total = 0
 while flag_1 == False:
-    n = input("Введите число от 1 до 100")
-    if is_valid(n):
+    m = input("Введите правую границу для загадываемого числа(максимальное число)")
+    if is_valid_max(m):
+        m = int(m)
+        flag_2 = True
+        break
+    else:
+        print('Ввод некорректный. Введите правую границу для загадываемого числа(максимальное число)')
+
+number = random.randint(1, m)
+
+flag_2 = False
+total = 0
+
+while flag_2 == False:
+    n = input(f"Введите число от 1 до {m}")
+    if is_valid(n, m):
         n = int(n)
         total += 1
         if n > number:
@@ -22,11 +40,11 @@ while flag_1 == False:
             print('Ваше число меньше загаданного, попробуйте еще разок')
         elif n == number:
             print(f'Верно, Вы угадали с {total} попытки! Поздравляем!')
-            flag_1 = True
-            if flag_1 == True:
+            flag_2 = True
+            if flag_2 == True:
                 a = input('Хотите сыграть ещё? Если да, то введите "да", если нет, то введите что угодно')
                 if a.lower() == 'да':
-                    flag_1 = False
+                    flag_2 = False
                     total = 0
                 else:
                     break
