@@ -23,6 +23,12 @@ while flag_1 == False:
         elif n == number:
             print(f'Верно, Вы угадали с {total} попытки! Поздравляем!')
             flag_1 = True
-            break
+            if flag_1 == True:
+                a = input('Хотите сыграть ещё? Если да, то введите "да", если нет, то введите что угодно')
+                if a.lower() == 'да':
+                    flag_1 = False
+                    total = 0
+                else:
+                    break
     else:
         print('Ввод некорректный. Введите число от 1 до 100')
